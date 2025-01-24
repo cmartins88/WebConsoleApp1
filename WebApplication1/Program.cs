@@ -1,15 +1,9 @@
-
-using WebApplication1.Data;
-
 namespace WebApplication1
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            List<User> users = UsersData.GetAll().ToList();
-
-
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -29,7 +23,6 @@ namespace WebApplication1
             }
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
