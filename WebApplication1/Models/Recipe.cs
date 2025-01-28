@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public string Category { get; set; }
         public User User { get; set; }
+        public virtual IList<Comment>? Comments { get; } = default!;
     }
 }

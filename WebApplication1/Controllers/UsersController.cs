@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
@@ -39,7 +38,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult<User> Create(User user)
         {
-            return UsersData.Create(user);
+            try
+            {
+                return UserManager.createUser(user);
+            } catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // GET: UsersController/Edit/5

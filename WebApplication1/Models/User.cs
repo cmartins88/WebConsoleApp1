@@ -1,15 +1,35 @@
-﻿namespace WebApplication1.Models
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebApplication1.Models
 {
     // POCO entitie
     public class User
     {
+        [Key]
         public Guid UserId { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; }
+
+        [MinLength(8)]
+        [MaxLength(12)]
         public string Password { get; set; }
+
+        [MaxLength(255)]
         public string Name { get; set; }
         public bool Vegetarian { get; set; }
-        public string Country { get; set; } = "PT"; 
+
+        [Required]
+        [DefaultValue("PT")]
+        public string? Country { get; set; }
         public int Age { get; set; }
+
+        [NotMapped]
+        public int Birth_year { get { return 0; } }
         public virtual IList<Recipe>? Recipes { get; } = default!;
+        public virtual IList<Comment>? Comments { get; } = default!;
     }
 }
