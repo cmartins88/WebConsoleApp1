@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data;
+
 namespace WebApplication1
 {
     public class Program
@@ -5,6 +8,14 @@ namespace WebApplication1
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var connectionString =
+                builder.Configuration.GetConnectionString("local")
+                    ?? throw new InvalidOperationException("Connection string"
+                    + "'DefaultConnection' not found.");
+
+            builder.Services.AddDbContext<APIContext>(options =>
+                options.UseSqlServer(connectionString));
 
             // Add services to the container.
 

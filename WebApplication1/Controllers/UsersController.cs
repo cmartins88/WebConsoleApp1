@@ -8,19 +8,30 @@ namespace WebApplication1.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
+        private readonly APIContext _context;
+        
+        public UsersController(APIContext context)
+        {
+            _context = context;
+        }
+
         // GET: /api/users/ID
         [HttpGet("{id}")]
         public ActionResult<User> Details(Guid id)
         {
             try
             {
-                User user = UsersData.Get(id);
-                if(user == null)
+                var user = 
+                    from _user in _context.Users
+                    where _user.UserId == id
+                    select _user;
+
+                if(user == null || user.Count() != 1)
                 {
-                    return NotFound();
+                    return NotFound(id);
                 }
 
-                return user;
+                return user.First();
             } catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -31,16 +42,19 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<User>> Details()
         {
-           return UsersData.GetAll().ToList();
+           return _context.Users;
         }
 
+        // http 200
         // POST: UsersController/Create
         [HttpPost]
         public ActionResult<User> Create(User user)
         {
             try
             {
-                return UserManager.createUser(user);
+                var _user = _context.Users.Add(user);
+                _context.SaveChanges();
+                return _user.Entity;
             } catch (Exception ex)
             {
                 return BadRequest(new { message = ex.Message });

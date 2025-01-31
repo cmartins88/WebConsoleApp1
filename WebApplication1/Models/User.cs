@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
-    // POCO entitie
+    // POCO entities
     public class User
     {
         [Key]
@@ -29,7 +29,9 @@ namespace WebApplication1.Models
 
         [NotMapped]
         public int Birth_year { get { return 0; } }
+
         public virtual IList<Recipe>? Recipes { get; } = default!;
+
         public virtual IList<Comment>? Comments { get; } = default!;
     }
 }
