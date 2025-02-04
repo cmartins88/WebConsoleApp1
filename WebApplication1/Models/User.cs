@@ -9,7 +9,7 @@ namespace WebApplication1.Models
     public class User
     {
         [Key]
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } = Guid.NewGuid();
 
         [EmailAddress]
         public string Email { get; set; }
@@ -31,7 +31,6 @@ namespace WebApplication1.Models
         public int Birth_year { get { return 0; } }
 
         public virtual IList<Recipe>? Recipes { get; } = default!;
-
         public virtual IList<Comment>? Comments { get; } = default!;
     }
 }

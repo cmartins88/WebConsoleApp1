@@ -12,7 +12,7 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(APIContext))]
-    [Migration("20250131212212_InitialMigration")]
+    [Migration("20250204212527_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -29,7 +29,8 @@ namespace WebApplication1.Migrations
                 {
                     b.Property<Guid>("CommentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -57,7 +58,8 @@ namespace WebApplication1.Migrations
                 {
                     b.Property<Guid>("RecipeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -71,7 +73,7 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("RecipeId");
@@ -85,7 +87,8 @@ namespace WebApplication1.Migrations
                 {
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -118,22 +121,24 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.Comment", b =>
                 {
-                    b.HasOne("WebApplication1.Models.Recipe", null)
+                    b.HasOne("WebApplication1.Models.Recipe", "Recipe")
                         .WithMany("Comments")
                         .HasForeignKey("RecipeId");
 
-                    b.HasOne("WebApplication1.Models.User", null)
+                    b.HasOne("WebApplication1.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Recipe");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Recipe", b =>
                 {
                     b.HasOne("WebApplication1.Models.User", "User")
                         .WithMany("Recipes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
