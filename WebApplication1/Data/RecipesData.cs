@@ -2,10 +2,10 @@
 
 namespace WebApplication1.Data
 {
-    public class RecipesData
+    public class RecipesData : IData<Recipe, Guid>
     {
-        public static IEnumerable<Recipe> GetAll() { return new[] { new Recipe() }; }
+        public IEnumerable<Recipe> GetAll() { return new[] { new Recipe() }; }
 
-        public static Recipe Get(Guid id) { return new Recipe() { }; }
+        public Recipe Get(Guid id) { return new Recipe() { }; }
     }
 }

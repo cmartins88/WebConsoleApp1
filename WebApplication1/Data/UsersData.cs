@@ -3,9 +3,9 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Data
 {
-    public static class UsersData
+    public class UsersData : IData<User, Guid>
     {
-        public static IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAll()
         {
             using (SqlConnection con = new SqlConnection(Utils.ConnectionString))
             {
@@ -33,7 +33,7 @@ namespace WebApplication1.Data
             }
         }
 
-        public static User Get(Guid id)
+        public User Get(Guid id)
         {
             using (SqlConnection con = new SqlConnection(Utils.ConnectionString))
             {
@@ -59,7 +59,7 @@ namespace WebApplication1.Data
             }
         }
 
-        public static User Create(User user)
+        public User Create(User user)
         {
             using (SqlConnection con = new SqlConnection(Utils.ConnectionString))
             {
@@ -84,11 +84,11 @@ namespace WebApplication1.Data
             return user;
         }
 
-        public static void Update(User user) { }
+        public void Update(User user) { }
 
-        public static void Delete(Guid id) { }
+        public void Delete(Guid id) { }
 
-        public static void DeleteAll() { }
+        public void DeleteAll() { }
 
 
     }

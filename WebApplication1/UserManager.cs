@@ -20,7 +20,7 @@ namespace WebApplication1
 
             user.Country = mapCountry[user.Country];
 
-            return UsersData.Create(user);
+            return new UsersData().Create(user);
         }
     }
 }

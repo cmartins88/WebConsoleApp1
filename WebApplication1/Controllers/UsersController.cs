@@ -76,7 +76,7 @@ namespace WebApplication1.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            UsersData.Delete(id);
+            new UsersData().Delete(id);
         }
     }
 }
