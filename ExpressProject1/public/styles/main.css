@@ -1,0 +1,62 @@
+p, h1, h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+aside {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+}
+
+#main-section {
+    display: inline-block;
+}
+
+.strong-letter {
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+}
+
+p.strong-letter {
+    font-size: 12px;
+}
+
+article.strong-letter {
+    font-size: 16px;
+}
+
+main div {
+    border: 2px dashed red;
+}
+
+main > div {
+    border: 2px dashed green;
+    background-image: url('../img/capybara.jpg');
+    background-repeat: repeat-x;
+}
+
+body {
+    background-color: rgba(250, 100, 100, 0.5);
+}
+
+a.menu {
+    color: red;
+    text-decoration: none;
+}
+
+ul.menu {
+    list-style: none;
+    display: none;
+}
+
+a.menu:hover {
+    font-size: 30px;
+}
+
+a:visited {
+    color: green;
+}
+
+a:not(:visited) {
+}
