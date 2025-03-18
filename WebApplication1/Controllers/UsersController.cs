@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: UsersController/Edit/5
+        // PUT: UsersController/Edit/5
         [HttpPut("{id}")]
         public ActionResult<User> Edit(Guid id, User user)
         {
@@ -72,7 +72,7 @@ namespace WebApplication1.Controllers
             throw new NotImplementedException();
         }
 
-        // GET: UsersController/Delete/5
+        // DELETE: UsersController/Delete/5
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {

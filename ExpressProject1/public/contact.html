@@ -1,18 +1,36 @@
 <!DOCTYPE html>
+<!--html markup-->
+<html>
+    <!--head of the page-->
+    <head>
+        <title>Hello world</title>
+        <meta charset="UTF-8" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+        <link href="./styles/main.css" rel="stylesheet" />
+        <script src="/js/main.js"></script>
+    </head>
 
-    <form>
-        Name:
-        Email:
-        Subject:
-        Message:
+    <!--body-->
+    <body>
+    <header>
+        <div>
+            Logotipo
+        </div>
+    </header>
+    <form name="userForm">
+        <input type="text" name="name" />
+        <input type="text" name="email" />
+        <input type="password" name="password" />
+        <input type="number" name="age" max="150" min="18" />
+        <select name="country">
+            <option value="PT">Portugal</option>
+            <option value="EN">Inglaterra</option>
+        </select>
+        <label for="veg">Vegetarian</label>
+        <input id="veg" type="checkbox" value="1" name="vegetarian" />
+
+        <input type="hidden" name="userId" />
+        <input id="btnUserSubmit" type="submit" value="Enviar" />
     </form>
-
 </body>
 </html>

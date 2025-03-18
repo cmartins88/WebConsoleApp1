@@ -17,6 +17,15 @@ namespace WebApplication1
             builder.Services.AddDbContext<APIContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyPolicy",
+                                  builder => builder
+                                    .AllowAnyOrigin()
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod());
+            });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -32,6 +41,8 @@ namespace WebApplication1
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
