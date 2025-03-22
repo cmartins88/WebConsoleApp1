@@ -1,7 +1,9 @@
 function onBtnMenuClick() {
     //document.getElementById('menu').style.display = 'block';
     // =
-    document.querySelector('#menu').style.display = 'block';
+    //document.querySelector('#menu').style.display = 'block';
+
+    $("#menu").toggle(2000);
 }
 
 const ff = 0;
@@ -97,6 +99,43 @@ window.addEventListener('load', () => {
                     const xhr_del = new XMLHttpRequest();
                     xhr_del.open("DELETE", "http://localhost:5062/api/users/" + e.target.value);
                     xhr_del.send();
+
+                    $.delete("http://localhost:5062/api/users/" + e.target.value);
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:5062/api/users/" + e.target.value
+                    }, function (res) {
+                        // sucesso
+                    }, function (err) {
+                        // erro
+                    });
+
+                    /*$.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:5062/api/users/" + e.target.value,
+                        success: function (res) {
+                            // sucesso
+                        },
+                        error: function (err) {
+                            // erro
+                        }
+                    });*/
+
+                    /*
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:5062/api/users/" + e.target.value,
+                    })
+                        .done((res) => {
+                            // sucesso
+                        })
+                        .fail((err) => {
+                            // erro
+                        })
+                        .always((res) => {
+                            // sempre
+                        });*/
                 }
                 btnRmv.appendChild(btnRmvText);
                 td2.appendChild(btnRmv);
@@ -112,7 +151,7 @@ window.addEventListener('load', () => {
     xhr_all.send();
 
     // get an user and fill the form
-    const xhr = new XMLHttpRequest();
+    /*const xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost:5062/api/users/dd3c4d3d-860b-4105-a581-203da180da64");
 
     xhr.onreadystatechange = () => {
@@ -134,7 +173,24 @@ window.addEventListener('load', () => {
         }
     }
 
-    xhr.send();
+    xhr.send();*/
+
+    $.get("http://localhost:5062/api/users/dd3c4d3d-860b-4105-a581-203da180da64")
+        .done((res) => {
+            // success
+            var form = document.forms["userForm"];
+            var inputs = form.getElementsByTagName("input");
+
+            for (var i = 0; i < inputs.length; ++i) {
+                var input = inputs[i];
+
+                if (input.name == "vegetarian") {
+                    if (res[input.name]) input.checked = true;
+                } else if (input.type != "submit") {
+                    input.value = res[input.name];
+                }
+            }
+    });
 
     document.getElementById('btnUserSubmit').onclick = (e) => {
         e.preventDefault();
