@@ -1,0 +1,17 @@
+<p>contact works!</p>
+
+<form #userForm="ngForm" (ngSubmit)="onsubmit(userForm)">
+    Name: <input type="text" name="name" [ngModel]="user.name">
+    Email: <input type="email" name="email" [ngModel]="user.email">
+    Password: <input type="password" name="password" [ngModel]="user.password" />
+    Age: <input type="number" name="age" max="150" min="18" [ngModel]="user.age" />
+    Country:
+    <select name="country" [ngModel]="user.country">
+        <option value="PT">Portugal</option>
+        <option value="EN">Inglaterra</option>
+    </select>
+    <label for="veg">Vegetarian</label>
+    <input id="veg" type="checkbox" value="1" name="vegetarian" [ngModel]="user.vegetarian" />
+    <input type="hidden" name="userId" [ngModel]="user.userId" />
+    <button>Submit</button>
+</form>
