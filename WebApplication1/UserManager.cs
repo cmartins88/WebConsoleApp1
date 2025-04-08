@@ -13,6 +13,12 @@ namespace WebApplication1
             };
         public static User createUser(User user)
         {
+            mapUserCountry(user);
+            return new UsersData().Create(user);
+        }
+
+        public static User mapUserCountry(User user)
+        {
             if (user.Name.Contains("@"))
             {
                 throw new Exception("The name cannot contain an @");
@@ -20,7 +26,7 @@ namespace WebApplication1
 
             user.Country = mapCountry[user.Country];
 
-            return new UsersData().Create(user);
+            return user;
         }
     }
 }

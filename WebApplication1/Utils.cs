@@ -6,12 +6,12 @@
 
         static Utils() 
         {
-        var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
+            var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
 
-        ConnectionString = configuration.GetConnectionString("local");
+            ConnectionString = configuration.GetConnectionString("local");
         }
     }
 }
