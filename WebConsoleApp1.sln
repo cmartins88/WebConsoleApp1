@@ -11,7 +11,9 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ExpressProject1", "ExpressP
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "AngularProject1", "AngularProject1\AngularProject1.esproj", "{DB0283E5-E7DE-4CC6-A4E1-964556E6F3EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{0E1BCD32-93D6-47D7-8EED-469DEC206FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{0E1BCD32-93D6-47D7-8EED-469DEC206FF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project1-Angular", "Project1-Angular\Project1-Angular.csproj", "{327FAB40-DB06-4F0A-B478-F26F58F806FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{0E1BCD32-93D6-47D7-8EED-469DEC206FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E1BCD32-93D6-47D7-8EED-469DEC206FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E1BCD32-93D6-47D7-8EED-469DEC206FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327FAB40-DB06-4F0A-B478-F26F58F806FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327FAB40-DB06-4F0A-B478-F26F58F806FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327FAB40-DB06-4F0A-B478-F26F58F806FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327FAB40-DB06-4F0A-B478-F26F58F806FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
