@@ -32,5 +32,10 @@ namespace WebApplication1.Models
 
         public virtual IList<Recipe>? Recipes { get; } = default!;
         public virtual IList<Comment>? Comments { get; } = default!;
+
+        public override bool Equals(object? obj)
+        {
+            return this.Email == ((User)obj).Email;
+        }
     }
 }

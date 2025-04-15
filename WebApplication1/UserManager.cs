@@ -21,7 +21,7 @@ namespace WebApplication1
         {
             if (user.Name.Contains("@"))
             {
-                throw new Exception("The name cannot contain an @");
+                throw new ArgumentException("The first name cannot contain an @");
             }
 
             user.Country = mapCountry[user.Country];
