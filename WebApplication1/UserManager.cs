@@ -17,7 +17,7 @@ namespace WebApplication1
             return new UsersData().Create(user);
         }
 
-        public static User mapUserCountry(User user)
+        internal static User mapUserCountry(User user)
         {
             if (user.Name.Contains("@"))
             {
