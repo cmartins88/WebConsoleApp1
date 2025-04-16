@@ -18,7 +18,7 @@ namespace E2ETestProject
         }
 
         [Test]
-        public void ShouldCloseDivAfterRefuseBtnClickTest1()
+        public void ShouldCloseDivAfterRefuseBtnClickTest()
         {
             driver.Url = test_url;
 
@@ -39,7 +39,7 @@ namespace E2ETestProject
         }
 
         [Test]
-        public void ShouldShowResultsAfterSearchBtnClick()
+        public void ShouldShowResultsAfterSearchBtnClickTest()
         {
             driver.Url = test_url;
 
@@ -53,13 +53,13 @@ namespace E2ETestProject
 
             searchText.SendKeys("LambdaTest");
 
-            IWebElement searchBtn = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]"));
+            Thread.Sleep(1000);
 
-            if(searchBtn != null) { searchBtn.Click(); }
+            searchText.SendKeys(Keys.Enter);
 
-            Thread.Sleep(5000);
+            Thread.Sleep(10000);
 
-            IWebElement h3TitleLambdaTestResult = driver.FindElement(By.XPath("//*[@id=\"kp-wp-tab-overview\"]/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div[2]/div/div/span/a/h3"));
+            IWebElement h3TitleLambdaTestResult = driver.FindElement(By.XPath("//*[@id=\"rso\"]/div[1]/div[5]/div/div/div/div/div/div/div[1]/div[2]/div/div/span/a/h3"));
 
             string expected = "LambdaTest: Power Your Software Testing with AI and Cloud";
             string actual = h3TitleLambdaTestResult.Text;
